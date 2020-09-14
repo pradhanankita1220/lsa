@@ -1,0 +1,29 @@
+Theory of dhcp server:
+ 1)DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an Internet Protocol (IP) address to any device, or node, on a network so they can communicate using IP. 
+2) DHCP automates and centrally manages these configurations rather than requiring network administrators to manually assign IP addresses to all network devices. DHCP can be implemented on small local networks, as well as large enterprise networks.
+3)DHCP will assign new IP addresses in each location when devices are moved from place to place, which means network administrators do not have to manually configure each device with a valid IP address or reconfigure the device with a new IP address if it moves to a new location on the network. 
+4)Versions of DHCP are available for use in IP version 4 (IPv4) and IP version 6 (IPv6).
+5)DHCP runs at the application layer of the Transmission Control Protocol/IP (TCP/IP) stack to dynamically assign IP addresses to DHCP clients and to allocate TCP/IP configuration information to DHCP clients. 
+This includes subnet mask information, default gateway IP addresses and domain name system (DNS) addresses.
+
+Installation steps
+Step 1 :- Installing DHCP Server 
+Run the command below to install the DHCP server package
+Cmd  :- sudo apt-get -y install isc-dhcp-server
+Now edit the file /etc/default/isc-dhcp-server to define the interfaces DHCPD should use to serve DHCP requests, with the INTERFACES option
+Cmd :- Change Interface Option (INTERFACES="eth0")
+Step 2 :- Configure DHCP Server
+After This We Have To Configure DHCP Server
+DHCP configuration file is present at /etc/dhcp/dhcpd.conf
+Open And Modify DHCP File
+sudo vi /etc/dhcp/dhcpd.conf
+Configure your dhcpd.conf by directly editing through a path 
+Cmd :- $sudo nano /etc/dhcp/dhcpd.conf
+Replace Ip Address Of dhcpd.conf with your ip address.
+To Know Your Ip Address 
+Cmd :- ip addr OR ipconfig
+After Change Save And Exit
+Then to enable the services use the command
+Cmd :- $sudo systemctl enable isc-dhcp-server.service
+And Now Start The Service.
+Cmd :- $sudo systemctl start isc-dhcp-server.service
